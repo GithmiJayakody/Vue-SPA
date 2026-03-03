@@ -9,6 +9,7 @@ import TheWelcome from './components/TheWelcome.vue'
 
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
+      <h1 class="bg-red-500 text-green-500">Tailwind CSS is working!</h1>
     </div>
   </header>
 
