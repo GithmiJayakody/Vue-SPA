@@ -8,6 +8,7 @@ export interface Product {
   category: string
   thumbnail: string
   description: string
+  images: string[]
 }
 
 export interface ProductsResponse {
