@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import type { Product } from '../types/product'
+import { useCartStore } from '../stores/cart'
 
 defineProps<{
   product: Product
 }>()
+
+const cart = useCartStore()
 </script>
 
 <template>
@@ -29,7 +32,10 @@ defineProps<{
         <span class="text-lg font-black text-gray-900">
           ${{ product.price }}
         </span>
-        <button class="bg-pink-500 hover:bg-pink-600 text-white text-xs font-bold px-4 py-2 rounded-xl transition-colors">
+        <button 
+          @click.stop="cart.addToCart(product)"
+          class="bg-pink-500 hover:bg-pink-600 text-white text-xs font-bold px-4 py-2 rounded-xl transition-colors"
+        >
           Add to Cart
         </button>
       </div>

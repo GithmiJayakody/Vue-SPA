@@ -2,19 +2,21 @@
 import { ref, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import type { Product } from '../types/product'
+import { useCartStore } from '../stores/cart'
 
 const route = useRoute()   
 const router = useRouter() 
+const cart = useCartStore()
 
 const product = ref<Product | null>(null)
 const isLoading = ref(true)
 const error = ref<string | null>(null)
 const selectedImage = ref('')
+const addedToCart = ref(false)
 
 async function fetchProduct() {
   try {
     isLoading.value = true
-    
     const id = route.params.id
     const response = await fetch(`https://dummyjson.com/products/${id}`)
     const data: Product = await response.json()
@@ -29,6 +31,13 @@ async function fetchProduct() {
 
 function formatCategory(cat: string): string {
   return cat.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')
+}
+
+function handleAddToCart() {
+  if (!product.value) return
+  cart.addToCart(product.value)
+  addedToCart.value = true
+  setTimeout(() => { addedToCart.value = false }, 1000)
 }
 
 onMounted(() => {
@@ -134,8 +143,14 @@ onMounted(() => {
                 </span>
               </div>
 
-              <button class="w-full bg-pink-500 hover:bg-pink-600 text-white font-black text-lg py-4 rounded-2xl transition-colors">
-                🛒 Add to Cart
+              <button
+                @click="handleAddToCart"
+                class="w-full font-black text-lg py-4 rounded-2xl transition-all"
+                :class="addedToCart
+                  ? 'bg-green-500 text-white'
+                  : 'bg-pink-500 hover:bg-pink-600 text-white'"
+              >
+                {{ addedToCart ? '✓ Added to Cart!' : '🛒 Add to Cart' }}
               </button>
             </div>
           </div>
