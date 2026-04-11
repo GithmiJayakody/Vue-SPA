@@ -1,7 +1,12 @@
 <script setup lang="ts">
-defineProps<{
-  cartCount: number
+import { useCartStore } from '../stores/cart'
+
+defineEmits<{
+  openCart: []
 }>()
+
+const cart = useCartStore()
+
 </script>
 
 <template>
@@ -15,14 +20,17 @@ defineProps<{
       </div>
 
       
-      <button class="relative flex items-center gap-2 bg-pink-500 hover:bg-pink-600 text-white font-bold px-5 py-2 rounded-xl transition-colors">
+      <button 
+        @click="$emit('openCart')" 
+        class="relative flex items-center gap-2 bg-pink-500 hover:bg-pink-600 text-white font-bold px-5 py-2 rounded-xl transition-colors"
+      >
         <span>🛒</span>
         <span>Cart</span>
         <span
-          v-if="cartCount > 0"
+          v-if="cart.itemCount > 0"
           class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-black w-5 h-5 rounded-full flex items-center justify-center"
         >
-          {{ cartCount }}
+          {{ cart.itemCount }}
         </span>
       </button>
 
