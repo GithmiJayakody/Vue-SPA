@@ -22,20 +22,20 @@ const cart = useCartStore()
 
 
   <div
-    class="fixed top-0 right-0 h-full w-full sm:w-96 bg-white z-50 shadow-2xl flex flex-col transition-transform duration-300"
+    class="fixed top-0 right-0 h-full w-full sm:w-96 bg-white dark:bg-gray-900 z-50 shadow-2xl flex flex-col transition-transform duration-100"
     :class="isOpen ? 'translate-x-0' : 'translate-x-full'"
   >
 
-  <div class="flex items-center justify-between px-6 py-5 border-b border-gray-100">
-      <h2 class="text-lg font-black text-gray-900">
+  <div class="flex items-center justify-between px-6 py-5 border-b border-gray-100 dark:border-gray-700">
+      <h2 class="text-lg font-black text-gray-900 dark:text-white">
         🛒 Your Cart
         <span class="text-pink-500">({{ cart.itemCount }})</span>
       </h2>
       <button
         @click="$emit('close')"
-        class="text-gray-400 hover:text-gray-600 text-2xl font-bold transition-colors"
+        class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 text-2xl font-bold transition-colors"
       >
-        ×
+        x
       </button>
     </div>
 
@@ -54,18 +54,18 @@ const cart = useCartStore()
       <div
         v-for="item in cart.items"
         :key="item.product.id"
-        class="flex gap-4 items-center bg-gray-50 rounded-2xl p-3"
+        class="flex gap-4 items-center bg-gray-100 dark:bg-gray-800 rounded-2xl p-3"
       >
 
       <img
           :src="item.product.thumbnail"
           :alt="item.product.title"
-          class="w-16 h-16 rounded-xl object-cover flex-shrink-0"
+          class="w-16 h-16 rounded-xl object-cover shrink-0"
         />
 
 
         <div class="flex-1 min-w-0">
-          <p class="text-sm font-bold text-gray-800 line-clamp-1">
+          <p class="text-sm font-bold text-gray-800 dark:text-gray-100 line-clamp-1">
             {{ item.product.title }}
           </p>
           <p class="text-pink-500 font-black text-sm mt-1">
@@ -77,14 +77,16 @@ const cart = useCartStore()
         <div class="flex items-center gap-2">
           <button
             @click="cart.removeFromCart(item.product.id)"
-            class="w-7 h-7 rounded-full bg-gray-200 hover:bg-pink-100 text-gray-600 font-bold text-sm transition-colors"
+            class="w-7 h-7 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-pink-100 dark:hover:bg-pink-900 text-gray-600 dark:text-gray-300 font-bold text-sm transition-colors"
           >
-            −
+            -
           </button>
-          <span class="text-sm font-bold w-4 text-center">{{ item.quantity }}</span>
+
+          <span class="text-sm text-gray-600 dark:text-gray-300 font-bold w-4 text-center">{{ item.quantity }}</span>
+
           <button
             @click="cart.addToCart(item.product)"
-            class="w-7 h-7 rounded-full bg-gray-200 hover:bg-pink-100 text-gray-600 font-bold text-sm transition-colors"
+            class="w-7 h-7 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-pink-100 dark:hover:bg-pink-900 text-gray-600 dark:text-gray-300 font-bold text-sm transition-colors"
           >
             +
           </button>
@@ -92,17 +94,17 @@ const cart = useCartStore()
 
         <button
           @click="cart.deleteFromCart(item.product.id)"
-          class="text-gray-300 hover:text-red-400 transition-colors text-lg"
+          class="text-gray-300 hover:text-red-400 transition-colors text-sm"
         >
-          🗑
+          🗑️
         </button>
       </div>
     </div>
 
-    <div v-if="cart.items.length > 0" class="px-6 py-5 border-t border-gray-100 flex flex-col gap-3">
+    <div v-if="cart.items.length > 0" class="px-6 py-5 border-t border-gray-100 dark:border-gray-700 flex flex-col gap-3">
       <div class="flex items-center justify-between">
-        <span class="text-gray-500 font-medium">Total</span>
-        <span class="text-2xl font-black text-gray-900">
+        <span class="text-gray-500 dark:text-gray-400 font-medium">Total</span>
+        <span class="text-2xl font-black text-gray-900 dark:text-white">
           ${{ cart.totalPrice.toFixed(2) }}
         </span>
       </div>

@@ -66,12 +66,12 @@ onMounted(() => {
       @update:selectedCategory="selectedCategory = $event"
     />
 
-    <main class="max-w-7xl mx-auto px-4 py-10">
+    <main class="w-full mx-auto px-6 py-4">
 
       <div class="mb-8 flex items-end justify-between">
         <div>
-            <h1 class="text-3xl font-black text-gray-900">Women's Collection</h1>
-            <h1 class="text-gray-500 mt-1 text-lg">Discover the latest trends ✨</h1>
+            <h1 class="text-3xl font-black text-gray-900 dark:text-white">Women's Collection</h1>
+            <h1 class="text-gray-500 dark:text-gray-400 mt-1 text-lg">Discover the latest trends ✨</h1>
         </div> 
       </div>
 
@@ -88,7 +88,7 @@ onMounted(() => {
 
       
       <div v-else
-        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 px-6"
       >
         <ProductCard
           v-for="product in filteredProducts"

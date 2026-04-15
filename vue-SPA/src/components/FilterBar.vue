@@ -16,8 +16,8 @@ function formatCategory(cat: string): string {
 </script>
 
 <template>
-  <div class="bg-white border-b border-gray-100 shadow-sm">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col sm:flex-row gap-3">
+  <div class="bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800 shadow-sm transition-colors duration-100">
+    <div class="w-full mx-auto px-6 py-4 flex flex-col sm:flex-row gap-3">
 
       
       <div class="relative flex-1">
@@ -27,7 +27,7 @@ function formatCategory(cat: string): string {
           placeholder="Search dresses, shoes, bags..."
           :value="searchQuery"
           @input="$emit('update:searchQuery', ($event.target as HTMLInputElement).value)"
-          class="w-full pl-9 pr-4 py-2 border border-gray-200 rounded-xl text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-pink-300 focus:border-pink-400"
+          class="w-full pl-9 pr-4 py-2 border border-gray-200 dark:border-gray-700 rounded-xl text-sm text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-pink-300 focus:border-pink-400 placeholder-gray-400"
         />
       </div>
 
@@ -35,7 +35,7 @@ function formatCategory(cat: string): string {
       <select
         :value="selectedCategory"
         @change="$emit('update:selectedCategory', ($event.target as HTMLSelectElement).value)"
-        class="px-4 py-2 border border-gray-200 rounded-xl text-sm text-gray-600 focus:outline-none focus:ring-2 focus:ring-pink-300 focus:border-pink-400 bg-white"
+        class="px-4 py-2 border border-gray-200 dark:border-gray-700 rounded-xl text-sm text-gray-600 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-300 focus:border-pink-400 bg-white dark:bg-gray-800"
       >
         <option value="">All Categories</option>
         <option

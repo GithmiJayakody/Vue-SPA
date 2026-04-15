@@ -3,16 +3,18 @@ import { ref, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import NavBar from './components/NavBar.vue'
 import CartSidebar from './components/CartSidebar.vue'
+import { useDarkMode } from './composables/useDarkMode'
 
 const route = useRoute()
 const isCartOpen = ref(false)
+useDarkMode()
 
 const showNavBar = computed(() => route.path !== '/login')
 
 </script>
 
 <template>
-  <div class="min-h-screen bg-gray-50">
+  <div class="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-100">
 
     <NavBar 
       v-if="showNavBar"

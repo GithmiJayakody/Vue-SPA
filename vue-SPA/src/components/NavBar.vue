@@ -2,6 +2,7 @@
 import { useCartStore } from '../stores/cart'
 import { useAuthStore } from '../stores/auth'
 import { useRouter } from 'vue-router'
+import { useDarkMode } from '../composables/useDarkMode'
 
 defineEmits<{
   openCart: []
@@ -10,6 +11,7 @@ defineEmits<{
 const cart = useCartStore()
 const auth = useAuthStore()
 const router = useRouter()
+const { isDark, toggleDark } = useDarkMode()
 
 function handleLogout() {
   auth.logout()
@@ -19,8 +21,8 @@ function handleLogout() {
 </script>
 
 <template>
-  <header class="bg-white border-b border-gray-100 sticky top-0 z-50 shadow-sm">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+  <header class="bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800 sticky top-0 z-50 shadow-md dark:shadow-gray-800 transition-colors duration-100">
+    <div class="w-full mx-auto px-6 py-4 flex items-center justify-between">
 
       
       <div class="flex items-center gap-2">
@@ -31,10 +33,18 @@ function handleLogout() {
       <div class="flex items-center gap-3">
 
         <div v-if="auth.isLoggedIn" class="hidden sm:flex items-center gap-2">
-          <span class="text-sm font-semibold text-gray-600">
+          <span class="text-sm font-semibold text-gray-600 dark:text-gray-300">
             Hi, {{ auth.user!.firstName }}!
           </span>
         </div>
+
+        <button
+          @click="toggleDark"
+          class="w-10 h-10 rounded-xl flex items-center justify-center bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+        >
+          <span v-if="isDark">☀️</span>
+          <span v-else>🌙</span>
+        </button>
 
         <button 
           @click="$emit('openCart')" 

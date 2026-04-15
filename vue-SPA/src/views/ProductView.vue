@@ -46,13 +46,13 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="min-h-screen bg-gray-100">
+  <div class="min-h-screen bg-gray-100 dark:bg-gray-900 transition-colors duration-100">
 
     
-    <div class="max-w-7xl mx-auto px-4 pt-8">
+    <div class="w-full mx-auto px-6 pt-8">
       <button
         @click="router.push('/')"
-        class="flex items-center gap-2 text-sm text-gray-500 hover:text-pink-500 transition-colors font-medium"
+        class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 hover:text-pink-500 transition-colors font-medium"
       >
         ← Back to Collection
       </button>
@@ -71,13 +71,13 @@ onMounted(() => {
 
     
     <div v-else-if="product" class="max-w-7xl mx-auto px-4 py-8">
-      <div class="bg-white rounded-3xl shadow-sm overflow-hidden">
+      <div class="bg-white dark:bg-gray-900 dark:border dark:border-gray-800 rounded-3xl shadow-sm dark:shadow-gray-800 overflow-hidden">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
 
           
-          <div class="p-8 bg-gray-50">
+          <div class="p-8 bg-gray-50 dark:bg-gray-800 dark:border-r dark:border-gray-800">
             
-            <div class="aspect-square rounded-2xl overflow-hidden mb-4 bg-white">
+            <div class="aspect-square rounded-2xl overflow-hidden mb-4 bg-white dark:bg-gray-800 dark:border-t dark:border-gray-900 shadow-md dark:shadow-gray-900">
               <img
                 :src="selectedImage"
                 :alt="product.title"
@@ -92,7 +92,7 @@ onMounted(() => {
                 :key="img"
                 :src="img"
                 @click="selectedImage = img"
-                class="w-16 h-16 rounded-xl object-cover cursor-pointer border-2 transition-all"
+                class="w-16 h-16 rounded-xl object-cover cursor-pointer border-2 bg-white dark:bg-gray-800 shadow-sm dark:shadow-gray-900 transition-all shrink-0"
                 :class="selectedImage === img ? 'border-pink-500' : 'border-transparent'"
               />
             </div>
@@ -112,12 +112,12 @@ onMounted(() => {
               </div>
 
               
-              <h1 class="text-2xl font-black text-gray-900 mb-4">
+              <h1 class="text-2xl font-black text-gray-900 dark:text-gray-200 mb-4">
                 {{ product.title }}
               </h1>
 
               
-              <p class="text-gray-500 text-sm leading-relaxed mb-6">
+              <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-6">
                 {{ product.description }}
               </p>
 
@@ -135,7 +135,7 @@ onMounted(() => {
             
             <div>
               <div class="flex items-baseline gap-3 mb-6">
-                <span class="text-4xl font-black text-gray-900">
+                <span class="text-4xl font-black text-gray-900 dark:text-white">
                   ${{ product.price }}
                 </span>
                 <span class="text-sm text-red-400 font-semibold">

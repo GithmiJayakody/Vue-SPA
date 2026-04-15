@@ -10,9 +10,9 @@ const cart = useCartStore()
 </script>
 
 <template>
-  <div class="rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 bg-white p-6">
+  <div class="bg-white dark:bg-gray-900 dark:border dark:border-gray-800 rounded-2xl overflow-hidden shadow hover:shadow-lg transition-all duration-100 cursor-pointer group">
     
-    <div class="relative h-64 bg-gray-50 overflow-hidden">
+    <div class="relative h-96 bg-gray-50 dark:bg-gray-800 overflow-hidden">
       <img
         :src="product.thumbnail"
         :alt="product.title"
@@ -25,11 +25,11 @@ const cart = useCartStore()
       <p class="text-xs text-pink-500 font-semibold uppercase tracking-widest mb-1">
         {{ product.category }}
       </p>
-      <h2 class="text-sm font-bold text-gray-800 line-clamp-1 mb-2">
+      <h2 class="text-sm font-bold text-gray-800 dark:text-gray-100 line-clamp-1 mb-2">
         {{ product.title }}
       </h2>
       <div class="flex items-center justify-between mt-3">
-        <span class="text-lg font-black text-gray-900">
+        <span class="text-lg font-black text-gray-900 dark:text-white">
           ${{ product.price }}
         </span>
         <button 
