@@ -16,7 +16,7 @@ function formatCategory(cat: string): string {
 </script>
 
 <template>
-  <div class="bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800 shadow-sm transition-colors duration-100">
+  <div class="bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800 shadow-sm dark:shadow-gray-800 transition-colors duration-100">
     <div class="w-full mx-auto px-6 py-4 flex flex-col sm:flex-row gap-3">
 
       

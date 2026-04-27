@@ -10,7 +10,7 @@ const cart = useCartStore()
 </script>
 
 <template>
-  <div class="bg-white dark:bg-gray-900 dark:border dark:border-gray-800 rounded-2xl overflow-hidden shadow hover:shadow-lg transition-all duration-100 cursor-pointer group">
+  <div class="bg-white dark:bg-gray-900 dark:border dark:border-gray-800 rounded-2xl overflow-hidden shadow dark:shadow-gray-800 hover:shadow-lg dark:hover:shadow-lg-gray-800 transition-all duration-100 cursor-pointer group">
     
     <div class="relative h-96 bg-gray-50 dark:bg-gray-800 overflow-hidden">
       <img
